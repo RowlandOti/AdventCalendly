@@ -1,5 +1,5 @@
 ### Status
-[![Build Status](https://travis-ci.com/RowlandOti/AdventCalendly.svg?branch=master)](https://travis-ci.com/RowlandOti/AdventCalendly)
+[![Build Status](https://travis-ci.org/RowlandOti/AdventCalendly.svg?branch=master)](https://travis-ci.org/RowlandOti/AdventCalendly)
 
 ## AdventCalendly
 
