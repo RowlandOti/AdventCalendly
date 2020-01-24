@@ -1,0 +1,31 @@
+.gradle
+/local.properties
+/build/
+*.tap
+*.iml
+*.exec
+/*.hprof
+
+#.idea excludes
+/.idea/caches
+/.idea/libraries
+/.idea/encodings.xml
+/.idea/gradle.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/runConfigurations.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
+
+# Log Files
+*.log
+
+# Android Studio Navigation editor temp files
+.navigation/
+
+# Android Studio captures folder
+captures/
+
+#crashlytics
+app/com.crashlytics.settings.json
+*.com.crashlytics.settings.json
