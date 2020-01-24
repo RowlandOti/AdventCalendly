@@ -1,0 +1,52 @@
+language: android
+notifications:
+  email:
+    recipients:
+    - rowlandotienoo@gmail.com
+    on_success: always
+    on_failure: always
+env:
+  global:
+  - secure: F1N3nqm3lHm+mVt9CeJS0OYnz4Z6Ydt4A6PdwA0U4rFhb5aPPgRcgPYrVgtDrNKqdFVqX7h5hisUeuDY86shRY/b/4BU3nYtJyUpcwit5iyGyUkL4NTzx+DLzLcjvzXCeWbwOHsEzQxqqg/Rpt04n7LLSHoHZHhPY61iY3jIsL23p4N4LwSTudl/atbR4K1BYmyesHmdvpsi9Hhlu6UoXQsfszZvzvPFKZr2teG/SCdlAdsJg55GINhFRHWxNqYURpfFQZHawTcq/xWB8QyJvCeiXJcdkgOfvf6JS3Et5HxT1uqKOqMhJ/gvNETn7wgKIN14iPFZJUE5MCEqdawSvdand6ziNrdSzD93z37+ZrVT0iR9pFIambnopYH+cdAZlPi4wG3hCWcm/smbBCDHU+hlpFSvQIxgZ3PwH4ZQtuvLYXwERrn2K0uBNy9dff11wo/thgwRP3X8+GEC19qm+NKgHBNe51cLGD5m0Z0YK7Puc5LcgeCaSxVYy4dQvvpiKJipOb1mju4CLaBTVX8OO0h+x7L71MAvcBe66WeaGhgt/scHZhrc2UpSIVsugh1Dy6zlKoHDZr8mh8r9QBRZGLQhQ22FpxRsTmcdSHCrYbf5tlSkpNslla8YIUDnhc3yNnfenmjinQXV+GHVivMTsbekEFNGYtjPOGHjBxkN+xs=
+  - secure: Ugg1+kRi0+nWP8FVGsM/lywRrkLmZS7DPzAoWswSS8WXzOVXz8vwE3Z20/HZMcmoWhV2Ni72tV7u40FMvNw5DJ9evchXaCUrnipbuDFGnASAd6WBU6pqWmzUGum1wABUAlnlFwreDDDCtaeu/KllyaAeT+q/CR0UGxPTAL507A/+tDnN6bAi318zowqWyLQb2yNExmkwp3OfEQx4Dir+leQ4Ck/28Ke41ELbdRr2i/qEKEia7zAC4c6lN25ZzZpGvdDIGhM4GDhxZ0e6RGA6GC3fW6R2zlKDIMwPJVj3IYLnT5jfdmuQ7BSu97fSq3UF9OcohYosC4z6DO7ibNTAHuKXC06IeleAALjaYuHEzPgA1vOcUtHGpWDxMXYGtp1fQB7QrNM9hz1E/9zoz2tY7wsqRTLCYHviGwWCtnwbmZuWAhTzSonrgTmJJXujNNmdsX29LO5wtDNSM2zNVL4wbRFlr0K8jIqjsvcRmHqc58zvsivaljp2U/a1uKj5Qv6sh68y/S1B3pCNKMg+NZDjhuseqRpDcM4LMawlksJ8iuamte6HIdqKlaioCdBn5l8oZePSjk1PslMuF4ZpTcMuFubpkG32B+PhPmO9GyzDtBa7F14v9C65ye87GqvrDvRcF9+GDHrr58kpDGf76H0TbMH993E0F7hZZ29sc0bDZAY=
+jdk:
+- oraclejdk8
+before_cache:
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+  - "$HOME/.android/build-cache"
+android:
+  components:
+  - tools
+  - platform-tools
+  - tools
+  - extra-android-support
+  - extra-google-google_play_services
+  - extra-android-m2repository
+  - extra-google-m2repository
+  - build-tools-29.0.2
+  - android-29
+  licenses:
+  - android-sdk-preview-license-52d11cd2
+  - android-sdk-license-.+
+  - google-gdk-license-.+
+deploy:
+  provider: releases
+  api_key:
+    secure: Kp76qyAVnUhn1+uzSkoDjOEhJ2r77SFy/z4xGMBCR19vflBa5VK2B6tn6ao9TFjkamQbbY7HgH4sV3zOgUJJJFG2TP8NhgEQgBRqiVOveROOW03xKDYm1SPrz5vc0busvQ8iFKVhKiHIA7ZOom5mClUW3uFvOtg8gGDazFO0zqwYVzdJ9gD4yBLsDcQzaqORXDUpVsfDHiXoa6Cq7kgzZXokX5GcSZNO4TAsruAEUVnE6r607pqCLyTjBmN3k04/tP4GdE5z2Onrri4EWcpTuV3PhMGwUKagkEH94JN+Hlxq95sacg3Xhi6l7ldu494bzhCwspuNboDpWHmPoTR3t+Ooo7FYMcwnwBdXd+cR/o/k+6GdSF7WyfCZh8iqNlwcPyQcQG7mZGB5ZyWMHSsXOIeOLeUP70tnvDWS1VQFR58Umek++S+JnsgaTynF6iZqM5Lx8GFDJBjhKD9Ej9wRmhQNGcMbL+RC0DlSBDxdClhqFsaWVem/AzpuX9MiMnXLXOgGt8gvt4prYN6ECh9Xqug/igkJSdL9EAM2aFZ3Ti4P90uT3hgpzkTK3QRcTm6W+UKbdlvDJqv/GiT5wyhs6be4nrNQxWZb4LscBjzvGPtGCyExt3i1LDATN3AEsoKPDZte8qccHSkD4g9G9WIpG2OHVBtGbJIDbh/Ubwu+Wyk=
+  file: AdventCalendly/build/outputs/apk/debug/app-debug.apk
+  on:
+    repo: RowlandOti/AdventCalendly
+before_install:
+- mkdir "$ANDROID_HOME/licenses" || true
+- echo "d56f5187479451eabf01fb78af6dfcb131a6481e" > "$ANDROID_HOME/licenses/android-sdk-license"
+- export JAVA7_HOME=/usr/lib/jvm/java-7-oracle
+- export JAVA8_HOME=/usr/lib/jvm/java-8-oracle
+- export JAVA_HOME=$JAVA8_HOME
+- chmod +x gradlew
+script:
+- "./gradlew clean build --stacktrace"
