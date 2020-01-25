@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AdventCalendly</string>
+    <string name="click_to_redeem_gift">Click to Redeem Gift</string>
+    <string name="redeemed_gift_msg">100</string>
 </resources>

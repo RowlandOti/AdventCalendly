@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cardMarginHorizontal">8dp</dimen>
+    <dimen name="cardMarginVertical">8dp</dimen>
+    <dimen name="loced_card_elevation">2dp</dimen>
+    <dimen name="locked_card_radius">2dp</dimen>
+    <dimen name="locked_card_content_padding">0dp</dimen>
+    <dimen name="img_hidden_height">80dp</dimen>
+    <dimen name="img_hidden_width">80dp</dimen>
+</resources>

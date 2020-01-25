@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.skydoves.elasticviews.ElasticCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_cell_hidden"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/cardMarginHorizontal"
+    android:layout_marginTop="@dimen/cardMarginVertical"
+    android:layout_marginRight="@dimen/cardMarginHorizontal"
+    android:layout_marginBottom="@dimen/cardMarginVertical"
+    app:cardCornerRadius="@dimen/locked_card_radius"
+    app:cardElevation="@dimen/loced_card_elevation"
+    app:cardPreventCornerOverlap="false"
+    app:contentPadding="@dimen/locked_card_content_padding">
+
+    <include
+        android:id="@+id/cell_content_hidden"
+        layout="@layout/item_calendar_hidden"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/cell_content_show"
+        layout="@layout/item_calendar_shown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</com.skydoves.elasticviews.ElasticCardView>
