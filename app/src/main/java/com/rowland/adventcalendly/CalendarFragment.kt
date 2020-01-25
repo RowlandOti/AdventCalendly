@@ -8,10 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.rowland.adventcalendly.data.AdventDay
+import com.rowland.adventcalendly.data.AdventDayEntity
 import com.rowland.adventcalendly.uihelper.GridOffsetDecorator
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class CalendarFragment : Fragment() {
@@ -40,14 +43,27 @@ class CalendarFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.rv_calendar)
 
-        val items = ArrayList<AdventDay>()
+        val items = ArrayList<AdventDayEntity>()
+
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DATE, -7)
+        val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
+        val monthStr = DateUtils.getMonth(Locale.getDefault(), calendar.get(Calendar.MONTH))
+        val todaysDate = calendar.time
+
 
         for (i in 1 until 24) {
-            items.add(AdventDay(i, false))
+            val adventDay = AdventDayEntity(month = monthStr)
+            adventDay.day = i
+
+            adventDay.isOpenable = i <= dayOfMonth
+            items.add(adventDay)
         }
 
+        AdventApp.INSTANCE.database.adventDao().bulkInsert(items)
+
         val adapter = CalendarAdapter()
-        adapter.addData(items)
+
         recyclerView.layoutManager = GridLayoutManager(
             activity,
             calculateNoOfColumns(activity!!),
@@ -57,6 +73,10 @@ class CalendarFragment : Fragment() {
         recyclerView.addItemDecoration(GridOffsetDecorator(activity!!, R.dimen.item_offset));
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
+
+        AdventApp.INSTANCE.database.adventDao().getAll().observe(activity!!, Observer {
+            adapter.addData(it)
+        })
     }
 
     private fun calculateNoOfColumns(context: Context): Int {
