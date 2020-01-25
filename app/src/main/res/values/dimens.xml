@@ -7,4 +7,5 @@
     <dimen name="locked_card_content_padding">0dp</dimen>
     <dimen name="img_hidden_height">80dp</dimen>
     <dimen name="img_hidden_width">80dp</dimen>
+    <dimen name="item_offset">6dp</dimen>
 </resources>

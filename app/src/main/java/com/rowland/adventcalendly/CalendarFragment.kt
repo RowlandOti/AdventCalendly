@@ -10,11 +10,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.rowland.adventcalendly.data.AdventDay
+import com.rowland.adventcalendly.uihelper.GridOffsetDecorator
 
 
 class CalendarFragment : Fragment() {
 
-   private lateinit var recyclerView : RecyclerView
+    private lateinit var recyclerView: RecyclerView
 
 
     companion object {
@@ -25,7 +27,11 @@ class CalendarFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_calendar, container, false)
     }
 
@@ -34,21 +40,27 @@ class CalendarFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.rv_calendar)
 
-        val items = ArrayList<Any>()
+        val items = ArrayList<AdventDay>()
 
         for (i in 1 until 24) {
-            items.add(Any())
+            items.add(AdventDay(i, false))
         }
 
         val adapter = CalendarAdapter()
         adapter.addData(items)
-        recyclerView.layoutManager = GridLayoutManager(activity, calculateNoOfColumns(activity!!) , RecyclerView.VERTICAL, false)
+        recyclerView.layoutManager = GridLayoutManager(
+            activity,
+            calculateNoOfColumns(activity!!),
+            RecyclerView.VERTICAL,
+            false
+        )
+        recyclerView.addItemDecoration(GridOffsetDecorator(activity!!, R.dimen.item_offset));
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
     }
 
     private fun calculateNoOfColumns(context: Context): Int {
-        val displayMetrics: DisplayMetrics = context.getResources().getDisplayMetrics()
+        val displayMetrics: DisplayMetrics = context.resources.displayMetrics
         val dpWidth = displayMetrics.widthPixels / displayMetrics.density
         val scalingFactor = 180
         var noOfColumns = (dpWidth / scalingFactor).toInt()
