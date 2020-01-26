@@ -3,4 +3,5 @@
     <string name="click_to_redeem_gift">Click to Redeem Gift</string>
     <string name="redeemed_gift_msg">$ 100</string>
     <string name="advent_day_gift_value">$ %d</string>
+    <string name="day_i_z">Day %d/%d</string>
 </resources>

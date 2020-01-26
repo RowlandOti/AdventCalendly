@@ -11,6 +11,7 @@ import com.rowland.adventcalendly.data.AdventDayEntity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.item_calendar_hidden.view.cell_content_hidden
+import kotlinx.android.synthetic.main.item_calendar_hidden.view.tv_gift_day
 import kotlinx.android.synthetic.main.item_calendar_hidden.view.tv_gift_value
 import kotlinx.android.synthetic.main.item_calendar_shown.view.cell_content_shown
 import kotlinx.android.synthetic.main.item_calendar_shown.view.tv_front_day_num
@@ -43,9 +44,7 @@ class CalendarAdapter(var items: List<AdventDayEntity> = mutableListOf()) :
     }
 
     fun addData(list: List<AdventDayEntity>) {
-        items = list
-        //items = list.shuffled()
-
+        items = list.shuffled()
         notifyDataSetChanged()
     }
 
@@ -56,6 +55,8 @@ class CalendarAdapter(var items: List<AdventDayEntity> = mutableListOf()) :
             itemView.cell_content_shown.tv_front_day_num.text = adventDayEntity.day.toString()
             itemView.cell_content_shown.tv_front_month.text = adventDayEntity.month
 
+            itemView.cell_content_hidden.tv_gift_day.text =
+                itemView.context.getString(R.string.day_i_z, adventDayEntity.day, 24)
             itemView.cell_content_hidden.tv_gift_value.text =
                 itemView.context.getString(R.string.advent_day_gift_value, adventDayEntity.value)
 
@@ -75,16 +76,16 @@ class CalendarAdapter(var items: List<AdventDayEntity> = mutableListOf()) :
                     view!!.cell_content_hidden.visibility = View.VISIBLE
                     view.cell_content_shown.visibility = View.GONE
 
-                    adventDayEntity.isRedeemed = true
+                                       adventDayEntity.isRedeemed = true
 
-                    AdventApp.INSTANCE.database.adventDao().update(adventDayEntity)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({
-                            Timber.d(it.toString())
-                        }, {
-                            Timber.d(it.toString())
-                        })
+                    /* AdventApp.INSTANCE.database.adventDao().update(adventDayEntity)
+                          .subscribeOn(Schedulers.io())
+                          .observeOn(AndroidSchedulers.mainThread())
+                          .subscribe({
+                              Timber.d(it.toString())
+                          }, {
+                              Timber.d(it.toString())
+                          })*/
                 } else {
                     Toast.makeText(
                         itemView.context,

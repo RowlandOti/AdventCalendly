@@ -32,6 +32,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+        <TextView
+            android:id="@+id/tv_gift_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Day 4/24"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <ImageView
             android:layout_width="@dimen/img_hidden_height"
             android:layout_height="@dimen/img_hidden_width"
