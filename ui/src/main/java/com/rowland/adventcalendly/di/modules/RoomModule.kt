@@ -15,7 +15,7 @@ import javax.inject.Singleton
  */
 
 @Module
-class RoomModule(private val context: Context) {
+class RoomModule(context: Context) {
 
     val database: AdventDatabase =
         Room.databaseBuilder(context, AdventDatabase::class.java, AdventDatabase.DB_NAME)
