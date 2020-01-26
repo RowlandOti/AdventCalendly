@@ -14,7 +14,7 @@ import io.reactivex.Single
 
 
 @Dao
-interface AdventEntityDao {
+interface AdventDayDao {
 
     @Query("SELECT * FROM advent_day WHERE uid = :id")
     fun getById(id: String): LiveData<AdventDayEntity>
@@ -25,7 +25,7 @@ interface AdventEntityDao {
     @Query("SELECT * FROM advent_day")
     fun getAll(): LiveData<List<AdventDayEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(model: AdventDayEntity): Single<Long>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -41,7 +41,7 @@ interface AdventEntityDao {
     fun delete(id: Long): Completable
 
     @Update
-    fun update(model: AdventDayEntity): Int
+    fun update(model: AdventDayEntity): Single<Int>
 
     @Query("SELECT COUNT(uid) FROM advent_day")
     fun getCount(): LiveData<Int>

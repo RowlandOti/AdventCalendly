@@ -14,7 +14,7 @@ import androidx.room.RoomDatabase
 @Database(entities = [AdventDayEntity::class], version = 1, exportSchema = true)
 abstract class AdventDatabase : RoomDatabase() {
 
-    abstract fun adventDao(): AdventEntityDao
+    abstract fun adventDao(): AdventDayDao
 
     companion object {
         private const val DB_NAME = "advent-calendly.db"
