@@ -22,12 +22,12 @@ abstract class CompletableUseCase<in Params> protected constructor(
     /**
      * Builds a [Completable] which will be used when the current [CompletableUseCase] is executed.
      */
-    protected abstract fun buildUseCaseObservable(params: Params): Completable
+    protected abstract fun buildUseCaseObservable(params: Params?): Completable
 
     /**
      * Executes the current use case.
      */
-    fun execute(params: Params): Completable {
+    fun execute(params: Params? = null): Completable {
         return this.buildUseCaseObservable(params)
             .subscribeOn(Schedulers.from(threadExecutor))
             .observeOn(postExecutionThread.scheduler)

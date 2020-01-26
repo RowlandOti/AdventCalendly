@@ -13,12 +13,12 @@ import javax.inject.Inject
  * Created by Rowland on 1/26/2020.
  */
 
-class LoadAdventDaysUseCase @Inject
+class GetAllAdventDaysUseCase @Inject
 constructor(
     private val repository: IAdventDayRepository,
     threadExecutor: IThreadExecutor,
     postExecutionThread: IPostExecutionThread
-) : FlowableUseCase<List<AdventDay>, LoadAdventDaysUseCase.Params>(
+) : FlowableUseCase<List<AdventDay>, GetAllAdventDaysUseCase.Params>(
     threadExecutor,
     postExecutionThread
 ) {
