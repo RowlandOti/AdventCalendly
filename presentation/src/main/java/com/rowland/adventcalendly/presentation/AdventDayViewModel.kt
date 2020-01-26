@@ -1,5 +1,6 @@
 package com.rowland.adventcalendly.presentation
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rowland.adventcalendly.cache.mapper.AdventDayMapper
@@ -30,6 +31,10 @@ constructor(
 
     private val listOfAdventDays: MutableLiveData<Resource<List<AdventDayPayLoad>>> =
         MutableLiveData()
+
+    fun getListOfAdventDays(): LiveData<Resource<List<AdventDayPayLoad>>> {
+        return listOfAdventDays
+    }
 
     fun loadAll() {
         this.getAllAdventDayUseCase.execute(AdventDaysSubscriber())

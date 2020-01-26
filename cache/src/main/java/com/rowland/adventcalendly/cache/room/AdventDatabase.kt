@@ -18,7 +18,7 @@ abstract class AdventDatabase : RoomDatabase() {
     abstract fun adventDao(): AdventDayDao
 
     companion object {
-        private const val DB_NAME = "advent-calendly.db"
+        const val DB_NAME = "advent-calendly.db"
 
         @Volatile
         private var INSTANCE: AdventDatabase? = null

@@ -1,5 +1,4 @@
-package com.rowland.adventcalendly.cache.contract
-
+package com.rowland.adventcalendly.data.contract
 
 
 /**
@@ -12,8 +11,8 @@ package com.rowland.adventcalendly.cache.contract
  * @param <E> the entity model output type
  */
 interface IMapper<M, E> {
-    fun mapFromCache(model: M): E
-    fun mapToCache(model: E): M
-    fun mapToCacheList(modelList: List<E>): List<M>
-    fun mapFromCacheList(modelList: List<M>): List<E>
+    fun mapFromData(model: M): E
+    fun mapToData(model: E): M
+    fun mapToDataList(modelList: List<E>): List<M>
+    fun mapFromDataList(modelList: List<M>): List<E>
 }

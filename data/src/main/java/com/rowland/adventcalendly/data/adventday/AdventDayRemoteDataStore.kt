@@ -2,7 +2,7 @@ package com.rowland.adventcalendly.data.adventday
 
 import com.rowland.adventcalendly.data.contract.IAdventDayDataStore
 import com.rowland.adventcalendly.data.contract.IAdventDayRemoteSource
-import com.rowland.adventcalendly.domain.model.AdventDay
+import com.rowland.adventcalendly.data.model.AdventDayPojo
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
@@ -15,15 +15,15 @@ import javax.inject.Inject
 class AdventDayRemoteDataStore @Inject constructor(private val dataSource: IAdventDayRemoteSource) :
     IAdventDayDataStore {
 
-    override fun getAll(): Flowable<List<AdventDay>> {
+    override fun getAll(): Flowable<List<AdventDayPojo>> {
         return dataSource.getAll()
     }
 
-    override fun insert(model: AdventDay): Single<Long> {
+    override fun insert(model: AdventDayPojo): Single<Long> {
         return dataSource.insert(model)
     }
 
-    override fun bulkInsert(modelList: List<AdventDay>): Single<List<Long>> {
+    override fun bulkInsert(modelList: List<AdventDayPojo>): Single<List<Long>> {
         return dataSource.bulkInsert(modelList)
     }
 
@@ -31,7 +31,7 @@ class AdventDayRemoteDataStore @Inject constructor(private val dataSource: IAdve
         return dataSource.deleteAll()
     }
 
-    override fun update(model: AdventDay): Single<Int> {
+    override fun update(model: AdventDayPojo): Single<Int> {
         return dataSource.update(model)
     }
 
