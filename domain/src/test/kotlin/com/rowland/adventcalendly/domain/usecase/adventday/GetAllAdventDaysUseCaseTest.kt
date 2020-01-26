@@ -31,7 +31,7 @@ class GetAllAdventDaysUseCaseTest {
     @Mock
     private lateinit var postExecutionThread: IPostExecutionThread
     @Mock
-    private lateinit var productRepository: IAdventDayRepository
+    private lateinit var repository: IAdventDayRepository
     @InjectMocks
     private lateinit var getAllAdventDaysUseCase: GetAllAdventDaysUseCase
 
@@ -46,7 +46,7 @@ class GetAllAdventDaysUseCaseTest {
 
     @Test
     fun buildUseCaseObservable() {
-        Mockito.doReturn(Flowable.fromArray(adventDayList)).`when`(productRepository).getAll()
+        Mockito.doReturn(Flowable.fromArray(adventDayList)).`when`(repository).getAll()
 
 
         val testSubscriber = getAllAdventDaysUseCase.buildUseCaseObservable().test()
@@ -64,6 +64,6 @@ class GetAllAdventDaysUseCaseTest {
         adventDayList2.add(adventDay)
         Assert.assertTrue(!testSubscriber.values()[0].containsAll(adventDayList2))
 
-        Mockito.verify(productRepository).getAll()
+        Mockito.verify(repository).getAll()
     }
 }
