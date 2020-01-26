@@ -29,6 +29,8 @@ class AdventApp : Application() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+
+        initDataOnStartUp()
     }
 
     @SuppressLint("CheckResult")
@@ -36,7 +38,7 @@ class AdventApp : Application() {
         val items = ArrayList<AdventDayEntity>()
 
         val calendar = Calendar.getInstance()
-        //calendar.add(Calendar.DATE, -7)
+        calendar.add(Calendar.DATE, -10)
         val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
         val monthStr = DateUtils.getMonth(Locale.getDefault(), calendar.get(Calendar.MONTH))
 
@@ -44,10 +46,11 @@ class AdventApp : Application() {
             val adventDay = AdventDayEntity(month = monthStr)
             adventDay.day = i
 
-            Timber.d("Day is: $i and today is $dayOfMonth")
             adventDay.isOpenable = i <= dayOfMonth
             items.add(adventDay)
         }
+
+        Timber.d("Today is $dayOfMonth")
 
        database.adventDao().bulkInsert(items)
             .subscribeOn(Schedulers.io())
