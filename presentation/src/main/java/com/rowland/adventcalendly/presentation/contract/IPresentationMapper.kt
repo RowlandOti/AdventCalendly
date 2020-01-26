@@ -10,7 +10,7 @@ package com.rowland.adventcalendly.cache.contract
  * @param <M> the remote model input type
  * @param <E> the entity model output type
  */
-interface IMapper<M, E> {
+interface IPresentationMapper<M, E> {
     fun mapFromPresentation(model: M): E
     fun mapToPresentation(model: E): M
     fun mapToPresentationList(modelList: List<E>): List<M>

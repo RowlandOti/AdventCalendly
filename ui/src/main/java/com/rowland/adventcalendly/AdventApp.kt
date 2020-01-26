@@ -2,6 +2,7 @@ package com.rowland.adventcalendly
 
 import android.annotation.SuppressLint
 import android.app.Application
+import androidx.multidex.MultiDexApplication
 import com.rowland.adventcalendly.cache.room.AdventDatabase
 import com.rowland.adventcalendly.data.AdventDayEntity
 import com.rowland.adventcalendly.di.component.AppComponent
@@ -16,12 +17,11 @@ import kotlin.collections.ArrayList
 /**
  * Created by Rowland on 1/25/2020.
  */
-class AdventApp : Application() {
+class AdventApp : MultiDexApplication() {
 
-    lateinit var appComponent: AppComponent
-        private set
+/*    lateinit var appComponent: AppComponent
+        private set*/
 
-    internal lateinit var database: AdventDatabase
 
     init {
         INSTANCE = this
@@ -29,15 +29,14 @@ class AdventApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        database = AdventDatabase.getInstance(this)
 
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
 
-        appComponent = DaggerApplicationComponent.builder()
+/*        appComponent = DaggerApplicationComponent.builder()
             .contextModule(AppModule(this))
-            .build()
+            .build()*/
 
         initDataOnStartUp()
     }
@@ -62,7 +61,7 @@ class AdventApp : Application() {
 
         Timber.d("Today is $dayOfMonth")
 
-       database.adventDao().bulkInsert(items)
+        AdventDatabase.getInstance(this).adventDao().bulkInsert(items)
             .subscribeOn(Schedulers.io())
             .observeOn (AndroidSchedulers.mainThread())
             .subscribe({

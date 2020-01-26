@@ -1,6 +1,6 @@
 package com.rowland.adventcalendly.cache.source
 
-import com.rowland.adventcalendly.cache.mapper.AdventDayMapper
+import com.rowland.adventcalendly.cache.mapper.AdventDayCacheMapper
 import com.rowland.adventcalendly.cache.room.AdventDayDao
 import com.rowland.adventcalendly.data.contract.IAdventDayCacheSource
 import com.rowland.adventcalendly.data.model.AdventDayPojo
@@ -17,16 +17,16 @@ class AdventDayCacheSource @Inject constructor(private val adventDayDao: AdventD
     IAdventDayCacheSource {
     override fun getAll(): Flowable<List<AdventDayPojo>> {
         return adventDayDao.getAll().map {
-            AdventDayMapper.mapFromCacheList(it)
+            AdventDayCacheMapper.mapFromCacheList(it)
         }
     }
 
     override fun insert(model: AdventDayPojo): Single<Long> {
-        return adventDayDao.insert(AdventDayMapper.mapToCache(model))
+        return adventDayDao.insert(AdventDayCacheMapper.mapToCache(model))
     }
 
     override fun bulkInsert(model: List<AdventDayPojo>): Single<List<Long>> {
-        return adventDayDao.bulkInsert(AdventDayMapper.mapToCacheList(model))
+        return adventDayDao.bulkInsert(AdventDayCacheMapper.mapToCacheList(model))
     }
 
     override fun deleteAll(): Completable {
@@ -34,7 +34,7 @@ class AdventDayCacheSource @Inject constructor(private val adventDayDao: AdventD
     }
 
     override fun update(model: AdventDayPojo): Single<Int> {
-        return adventDayDao.update(AdventDayMapper.mapToCache(model))
+        return adventDayDao.update(AdventDayCacheMapper.mapToCache(model))
     }
 
     override fun clearFromCache(): Completable {

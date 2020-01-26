@@ -23,7 +23,7 @@ class RoomModule(private val context: Context) {
 
     @Singleton
     @Provides
-    fun providesRoomDatabase(): AdventDatabase? {
+    fun providesRoomDatabase(): AdventDatabase{
         return database
     }
 

@@ -15,6 +15,10 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rowland.adventcalendly.R
+import com.rowland.adventcalendly.di.modules.AppModule
+import com.rowland.adventcalendly.di.modules.RoomModule
+import com.rowland.adventcalendly.features.di.component.DaggerCalendarComponent
+import com.rowland.adventcalendly.features.di.modules.CalendarModule
 import com.rowland.adventcalendly.presentation.AdventDayPayLoad
 import com.rowland.adventcalendly.presentation.AdventDayViewModel
 import com.rowland.adventcalendly.presentation.state.ResourceState
@@ -41,6 +45,15 @@ class CalendarFragment : Fragment() {
             frag.arguments = args
             return frag
         }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        DaggerCalendarComponent.builder()
+            .calendarModule(CalendarModule())
+            .roomModule(RoomModule(activity!!))
+            .appModule(AppModule(activity!!))
+            .build().inject(this)
     }
 
     override fun onCreateView(
@@ -75,6 +88,8 @@ class CalendarFragment : Fragment() {
         );
         recyclerView.setHasFixedSize(false)
         recyclerView.adapter = adapter
+
+        adventViewModel.loadAll()
 
         adventViewModel.getListOfAdventDays().observe(activity!!, Observer {
             handleDataState(it.status, it.data, it.message)

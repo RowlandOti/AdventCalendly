@@ -1,7 +1,7 @@
 package com.rowland.adventcalendly.data.mapper
 
 
-import com.rowland.adventcalendly.data.contract.IMapper
+import com.rowland.adventcalendly.data.contract.IDataMapper
 import com.rowland.adventcalendly.data.model.AdventDayPojo
 import com.rowland.adventcalendly.domain.model.AdventDay
 
@@ -11,7 +11,7 @@ import com.rowland.adventcalendly.domain.model.AdventDay
  * Map a [ProductPayload] to and from a [ProductPojo] instance when data is moving between
  * this later and the Data layer
  */
-object AdventDayMapper : IMapper<AdventDayPojo, AdventDay> {
+object AdventDayDataMapper : IDataMapper<AdventDayPojo, AdventDay> {
 
     /**
      * Map an instance of a [AdventDayPojo] to a [AdventDay] model

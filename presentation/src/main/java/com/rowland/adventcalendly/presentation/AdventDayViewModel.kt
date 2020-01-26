@@ -3,7 +3,7 @@ package com.rowland.adventcalendly.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rowland.adventcalendly.cache.mapper.AdventDayMapper
+import com.rowland.adventcalendly.cache.mapper.AdventDayPresentationMapper
 import com.rowland.adventcalendly.domain.model.AdventDay
 import com.rowland.adventcalendly.domain.usecase.adventday.BulkCreateAdventDayUseCase
 import com.rowland.adventcalendly.domain.usecase.adventday.CreateAdventDayUseCase
@@ -61,7 +61,7 @@ constructor(
             listOfAdventDays.postValue(
                 Resource(
                     ResourceState.SUCCESS,
-                    t.map { AdventDayMapper.mapToPresentation(it) },
+                    t.map { AdventDayPresentationMapper.mapToPresentation(it) },
                     null
                 )
             )
