@@ -1,2 +1,2 @@
-include ':ui', ':domain', ':data', ':cache', ':presentation'
+include ':ui', ':domain', ':data', ':cache', ':presentation', ':remote'
 rootProject.name='AdventCalendly'

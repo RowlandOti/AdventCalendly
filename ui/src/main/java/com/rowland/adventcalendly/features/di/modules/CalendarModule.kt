@@ -5,6 +5,7 @@ import com.rowland.adventcalendly.di.modules.CacheModule
 import com.rowland.adventcalendly.di.modules.DataModule
 import com.rowland.adventcalendly.di.modules.DomainModule
 import com.rowland.adventcalendly.di.modules.PresentationModule
+import com.rowland.adventcalendly.di.modules.RemoteModule
 import com.rowland.adventcalendly.di.modules.RoomModule
 import com.rowland.adventcalendly.di.modules.UiModule
 import com.rowland.adventcalendly.features.calendar.ui.CalendarAdapter
@@ -26,7 +27,8 @@ import dagger.Provides
         DataModule::class,
         DomainModule::class,
         PresentationModule::class,
-        CacheModule::class
+        CacheModule::class,
+        RemoteModule::class
     )
 )
 class CalendarModule {
