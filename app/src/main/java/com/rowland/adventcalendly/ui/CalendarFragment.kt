@@ -1,6 +1,7 @@
-package com.rowland.adventcalendly
+package com.rowland.adventcalendly.ui
 
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -9,17 +10,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.rowland.adventcalendly.data.AdventDayEntity
+import com.rowland.adventcalendly.AdventApp
+import com.rowland.adventcalendly.R
 import com.rowland.adventcalendly.uihelper.GridOffsetDecorator
-import java.util.*
-import kotlin.collections.ArrayList
+import timber.log.Timber
 
 
 class CalendarFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
+    private lateinit var adventViewModel: AdventDayViewModel
 
 
     companion object {
@@ -38,29 +41,13 @@ class CalendarFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_calendar, container, false)
     }
 
+    @SuppressLint("CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = view.findViewById(R.id.rv_calendar)
 
-        val items = ArrayList<AdventDayEntity>()
-
-        val calendar = Calendar.getInstance()
-        calendar.add(Calendar.DATE, -7)
-        val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
-        val monthStr = DateUtils.getMonth(Locale.getDefault(), calendar.get(Calendar.MONTH))
-        val todaysDate = calendar.time
-
-
-        for (i in 1 until 24) {
-            val adventDay = AdventDayEntity(month = monthStr)
-            adventDay.day = i
-
-            adventDay.isOpenable = i <= dayOfMonth
-            items.add(adventDay)
-        }
-
-        AdventApp.INSTANCE.database.adventDao().bulkInsert(items)
+        adventViewModel =  ViewModelProviders.of(this).get(AdventDayViewModel::class.java)
 
         val adapter = CalendarAdapter()
 
@@ -70,12 +57,15 @@ class CalendarFragment : Fragment() {
             RecyclerView.VERTICAL,
             false
         )
-        recyclerView.addItemDecoration(GridOffsetDecorator(activity!!, R.dimen.item_offset));
-        recyclerView.setHasFixedSize(true)
+        recyclerView.addItemDecoration(GridOffsetDecorator(activity!!,
+            R.dimen.item_offset
+        ));
+        recyclerView.setHasFixedSize(false)
         recyclerView.adapter = adapter
 
-        AdventApp.INSTANCE.database.adventDao().getAll().observe(activity!!, Observer {
+        adventViewModel.getListOfAdventDays().observe(activity!!, Observer {
             adapter.addData(it)
+            Timber.d("Days in list; ${it}")
         })
     }
 
