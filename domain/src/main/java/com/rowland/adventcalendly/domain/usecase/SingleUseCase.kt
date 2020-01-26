@@ -31,7 +31,7 @@ abstract class SingleUseCase<T, in Params> constructor(
     open fun execute(params: Params? = null): Single<T> {
         return this.buildUseCaseObservable(params)
             .subscribeOn(Schedulers.from(threadExecutor))
-            .observeOn(postExecutionThread.scheduler) as Single<T>
+            .observeOn(postExecutionThread.scheduler)
     }
 
     /**
