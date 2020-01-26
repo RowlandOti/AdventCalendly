@@ -13,5 +13,6 @@ import androidx.room.PrimaryKey
 data class AdventDayEntity(@PrimaryKey(autoGenerate = true) val uid: Int =0,
                            @ColumnInfo(name = "day") var day: Int= 0,
                            @ColumnInfo(name = "month") val month: String,
+                           @ColumnInfo(name = "value") var value: Int= 0,
                            @ColumnInfo(name = "is_openable") var isOpenable : Boolean= false,
                            @ColumnInfo(name = "is_redeemed") var isRedeemed : Boolean = false)

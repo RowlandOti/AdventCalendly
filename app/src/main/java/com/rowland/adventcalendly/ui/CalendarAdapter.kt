@@ -3,18 +3,22 @@ package com.rowland.adventcalendly.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.rowland.adventcalendly.AdventApp
 import com.rowland.adventcalendly.R
 import com.rowland.adventcalendly.data.AdventDayEntity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.item_calendar_hidden.view.cell_content_hidden
+import kotlinx.android.synthetic.main.item_calendar_hidden.view.tv_gift_value
+import kotlinx.android.synthetic.main.item_calendar_shown.view.cell_content_shown
 import kotlinx.android.synthetic.main.item_calendar_shown.view.tv_front_day_num
 import kotlinx.android.synthetic.main.item_calendar_shown.view.tv_front_month
 
+
 import kotlinx.android.synthetic.main.row_calendar.view.card_cell
-import kotlinx.android.synthetic.main.row_calendar.view.cell_content_hidden
-import kotlinx.android.synthetic.main.row_calendar.view.cell_content_shown
+
 import timber.log.Timber
 
 class CalendarAdapter(var items: List<AdventDayEntity> = mutableListOf()) :
@@ -52,6 +56,9 @@ class CalendarAdapter(var items: List<AdventDayEntity> = mutableListOf()) :
             itemView.cell_content_shown.tv_front_day_num.text = adventDayEntity.day.toString()
             itemView.cell_content_shown.tv_front_month.text = adventDayEntity.month
 
+            itemView.cell_content_hidden.tv_gift_value.text =
+                itemView.context.getString(R.string.advent_day_gift_value, adventDayEntity.value)
+
             if (!adventDayEntity.isOpenable) {
                 itemView.card_cell.cell_content_hidden.visibility = View.GONE
                 itemView.card_cell.cell_content_shown.visibility = View.VISIBLE
@@ -78,6 +85,12 @@ class CalendarAdapter(var items: List<AdventDayEntity> = mutableListOf()) :
                         }, {
                             Timber.d(it.toString())
                         })
+                } else {
+                    Toast.makeText(
+                        itemView.context,
+                        "Sorry, you cannot reddem at this time",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }

@@ -45,7 +45,7 @@ class AdventApp : Application() {
         for (i in 1 until 24) {
             val adventDay = AdventDayEntity(month = monthStr)
             adventDay.day = i
-
+            adventDay.value = i* 10 * (0..5).random()
             adventDay.isOpenable = i <= dayOfMonth
             items.add(adventDay)
         }
