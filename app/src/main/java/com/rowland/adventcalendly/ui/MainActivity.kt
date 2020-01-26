@@ -1,7 +1,8 @@
-package com.rowland.adventcalendly
+package com.rowland.adventcalendly.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.rowland.adventcalendly.R
 
 class MainActivity : AppCompatActivity() {
 
