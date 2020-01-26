@@ -38,11 +38,12 @@ class AdventApp : Application() {
         val items = ArrayList<AdventDayEntity>()
 
         val calendar = Calendar.getInstance()
+        // Minus -7 , so that we can simulate openable days of the month - assume today is 7 days back
         calendar.add(Calendar.DATE, -10)
         val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
         val monthStr = DateUtils.getMonth(Locale.getDefault(), calendar.get(Calendar.MONTH))
 
-        for (i in 1 until 24) {
+        for (i in 1 until 25) {
             val adventDay = AdventDayEntity(month = monthStr)
             adventDay.day = i
             adventDay.value = i* 10 * (0..5).random()
