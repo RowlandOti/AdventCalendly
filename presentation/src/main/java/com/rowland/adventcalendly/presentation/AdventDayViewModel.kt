@@ -37,6 +37,7 @@ constructor(
     }
 
     fun loadAll() {
+        listOfAdventDays.postValue(Resource(ResourceState.LOADING, null, null))
         this.getAllAdventDayUseCase.execute(AdventDaysSubscriber())
     }
 
@@ -50,6 +51,11 @@ constructor(
 
     fun bulkCreate(modelList: List<AdventDay>): Single<List<Long>> {
         return bulkCreateUseCase.execute(BulkCreateAdventDayUseCase.Params.forAdventDay(modelList))
+    }
+
+    override fun onCleared() {
+        getAllAdventDayUseCase.dispose()
+        super.onCleared()
     }
 
     inner class AdventDaysSubscriber : DisposableSubscriber<List<AdventDay>>() {
