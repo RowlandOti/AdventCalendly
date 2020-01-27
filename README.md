@@ -10,7 +10,16 @@
 ![Alt text](https://github.com/RowlandOti/AdventCalendly/blob/master/art/device-landscape.png?raw=true "AdventCalendly Preview")  
 
 
-### Overview
+### Overview - Technology
+
+This project demonstrates the following competencies:
+
+- [Layered Architecture Pattern][1] ([Clean Architecture][2])
+- [Reactive Programming][8] with [RxJava][9]
+- [Dependency Injection][3] with [Dagger 2][4]
+- [Repository Pattern][6]
+- [Arhcitecture Components][18]
+- [Unit Test][10] following [TDD First][11] approach ([JUnit][12])
 
 
 ### Developers
@@ -53,3 +62,23 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
+
+
+[1]: https://www.oreilly.com/ideas/software-architecture-patterns/page/2/layered-architecture
+[2]: https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html
+[3]: https://martinfowler.com/articles/injection.html
+[4]: https://google.github.io/dagger/
+[5]: http://jakewharton.github.io/butterknife/
+[6]: https://msdn.microsoft.com/en-us/library/ff649690.aspx
+[7]: https://square.github.io/retrofit/
+[8]: https://github.com/ReactiveX/RxJava
+[9]: https://medium.com/@kuassivi/functional-reactive-programming-with-rxjava-part-2-78db194e7d35#.7mx0stygm
+[10]: https://developer.android.com/training/testing/unit-testing/index.html
+[11]: https://www.versionone.com/agile-101/agile-software-programming-best-practices/test-first-programming/
+[12]: http://junit.org/junit4/
+[13]: https://developer.android.com/training/testing/unit-testing/local-unit-tests.html
+[14]: https://google.github.io/android-testing-support-library/docs/espresso/
+[15]: http://www.guru99.com/black-box-testing.html
+[16]: http://reactivex.io/documentation/operators.html
+[17]: http://softwareengineering.stackexchange.com/questions/200115/what-is-early-and-late-binding
+[18]: https://developer.android.com/topic/libraries/architecture
