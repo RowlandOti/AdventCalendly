@@ -64,7 +64,7 @@ This project demonstrates the following competencies:
  THE SOFTWARE.
 
 
-[1]: https://www.oreilly.com/ideas/software-architecture-patterns/page/2/layered-architecture
+[1]: https://gist.github.com/ygrenzinger/14812a56b9221c9feca0b3621518635b
 [2]: https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html
 [3]: https://martinfowler.com/articles/injection.html
 [4]: https://google.github.io/dagger/
