@@ -92,8 +92,6 @@ class AdventDayViewModelTest {
         viewModel.loadAll()
 
         verify(getAllAdventDaysUseCase, times(1)).execute(anyOrNull(), anyOrNull())
-
-        //verify(observer).onChanged(Resource(ResourceState.LOADING, null, null))
     }
 
     @Test
