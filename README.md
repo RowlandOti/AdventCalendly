@@ -5,10 +5,12 @@
 
 "Advent Calendar" app to show off technology, code style and design patterns as best practice.
 
-### Preview:
+## Preview
+
+![Alt text](https://github.com/RowlandOti/AdventCalendly/blob/master/art/device-landscape.png?raw=true "AdventCalendly Preview")  
 
 
-### Coming Soon
+### Overview
 
 
 ### Developers
