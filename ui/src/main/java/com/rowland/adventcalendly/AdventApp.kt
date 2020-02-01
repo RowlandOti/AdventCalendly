@@ -46,8 +46,6 @@ class AdventApp : MultiDexApplication() {
         val items = ArrayList<AdventDayEntity>()
 
         val calendar = Calendar.getInstance()
-        // Minus -7 , so that we can simulate openable days of the month - assume today is 7 days back
-        calendar.add(Calendar.DATE, -10)
         val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
         val monthStr = DateUtils.getMonth(Locale.getDefault(), calendar.get(Calendar.MONTH))
 
